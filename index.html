@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario de Bienestar Personal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #0e3268;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #resultados {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cuestionario de Bienestar Personal</h2>
+    <form id="bienestar-form" action="https://formspree.io/f/xkgnwkel" method="POST"> 
+        <!-- Nombre -->
+        <div class="question">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <!-- Preguntas del cuestionario -->
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <label for="salud-fisica">1. ¿Cómo te encuentras con tu salud física?</label>
+            <div class="options">
+                <label><input type="radio" name="salud-fisica" value="muy-buena"> Muy buena</label>
+                <label><input type="radio" name="salud-fisica" value="buena"> Buena</label>
+                <label><input type="radio" name="salud-fisica" value="regular"> Regular</label>
+                <label><input type="radio" name="salud-fisica" value="mala"> Mala</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <label for="salud-mental">2. ¿Cómo te encuentras mentalmente?</label>
+            <div class="options">
+                <label><input type="radio" name="salud-mental" value="muy-buena"> Muy buena</label>
+                <label><input type="radio" name="salud-mental" value="buena"> Buena</label>
+                <label><input type="radio" name="salud-mental" value="regular"> Regular</label>
+                <label><input type="radio" name="salud-mental" value="mala"> Mala</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question">
+            <label for="habitos-sueno">3. ¿Cuáles son tus hábitos de sueño?</label>
+            <div class="options">
+                <label><input type="radio" name="habitos-sueno" value="muy-buena"> Muy buena</label>
+                <label><input type="radio" name="habitos-sueno" value="buena"> Buena</label>
+                <label><input type="radio" name="habitos-sueno" value="regular"> Regular</label>
+                <label><input type="radio" name="habitos-sueno" value="mala"> Mala</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <label for="relacion-interpersonal">4. ¿Cómo es tu relación interpersonal?</label>
+            <div class="options">
+                <label><input type="radio" name="relacion-interpersonal" value="muy-buena"> Muy buena</label>
+                <label><input type="radio" name="relacion-interpersonal" value="buena"> Buena</label>
+                <label><input type="radio" name="relacion-interpersonal" value="regular"> Regular</label>
+                <label><input type="radio" name="relacion-interpersonal" value="mala"> Mala</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="question">
+            <label for="sexo">5. ¿Cuál es tu sexo?</label>
+            <div class="options">
+                <label><input type="radio" name="sexo" value="masculino"> Masculino</label>
+                <label><input type="radio" name="sexo" value="femenino"> Femenino</label>
+                <label><input type="radio" name="sexo" value="prefiero-no-decirlo"> Prefiero no decirlo</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="question">
+            <label for="edad">6. ¿Cuál es tu edad?</label>
+            <input type="number" name="edad" id="edad" required>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="question">
+            <label for="nivel-bienestar">7. En una escala del 1 al 10, ¿cómo calificarías tu nivel de bienestar general en las últimas dos semanas?</label>
+            <div class="options">
+                <label><input type="radio" name="nivel-bienestar" value="muy-buena"> Muy buena</label>
+                <label><input type="radio" name="nivel-bienestar" value="buena"> Buena</label>
+                <label><input type="radio" name="nivel-bienestar" value="regular"> Regular</label>
+                <label><input type="radio" name="nivel-bienestar" value="mala"> Mala</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="question">
+            <label for="felicidad-satisfaccion">8. ¿Con qué frecuencia te sientes feliz y satisfecho con tu vida diaria?</label>
+            <div class="options">
+                <label><input type="radio" name="felicidad-satisfaccion" value="muy-buena"> Muy buena</label>
+                <label><input type="radio" name="felicidad-satisfaccion" value="buena"> Buena</label>
+                <label><input type="radio" name="felicidad-satisfaccion" value="regular"> Regular</label>
+                <label><input type="radio" name="felicidad-satisfaccion" value="mala"> Mala</label>
+            </div>
+        </div>
+
+        <!-- Diagnóstico y recomendaciones (campos ocultos) -->
+        <input type="hidden" id="diagnostico-input" name="diagnostico">
+        <input type="hidden" id="recomendaciones-input" name="recomendaciones">
+        <input type="hidden" id="datos-personales-input" name="datos-personales">
+        <input type="hidden" id="puntos-positivos-input" name="puntos-positivos">
+        <input type="hidden" id="puntos-negativos-input" name="puntos-negativos">
+        <button type="submit" class="submit-btn">Enviar respuestas</button>
+        <div id="resultados">
+            <p id="diagnostico"></p>
+            <p id="recomendaciones"></p>
+            <p id="datos-personales"></p>
+            <p id="puntos"></p>
+            <p id="puntos-positivos"></p>
+            <p id="puntos-negativos"></p>
+            <h3>Resultados del cuestionario</h3>
+            <p id="diagnostico"></p>
+            <p id="recomendaciones"></p>
+            <p id="datos-personales"></p>
+            <p id="puntos"></p>
+            <p id="puntos-positivos"></p>
+            <p id="puntos-negativos"></p>
+        </div>    
+    </form>
+    
+    <script>
+        document.getElementById('bienestar-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío inmediato del formulario
+
+            // Obtener respuestas seleccionadas
+            let formData = new FormData(event.target);
+
+            // Inicializar contadores de puntos
+            let puntosPositivos = 0;
+            let puntosIntermedios = 0;
+            let puntosNegativos = 0;
+
+            // Calcular puntos
+            for (let [key, value] of formData.entries()) {
+                if (key !== 'nombre' && key !== 'edad' && key !== 'sexo') { // Ignorar datos personales
+                    if (value === 'muy-buena') {
+                        puntosPositivos += 2; // 2 puntos
+                    } else if (value === 'buena') {
+                        puntosPositivos += 1; // 1 punto positivo
+                    } else if (value === 'regular') {
+                        puntosIntermedios += 0.5; // 0.5 puntos
+                    } else if (value === 'mala') {
+                        puntosNegativos += 0.5; // 0.5 puntos negativos
+                    }
+                }
+            }
+
+            // Mostrar resultados
+            let diagnostico = "";
+            let recomendaciones = "";
+            let datosPersonales = `Nombre: ${formData.get('nombre')}, Edad: ${formData.get('edad')}, Sexo: ${formData.get('sexo')}`;
+            let totalPuntos = puntosPositivos + puntosIntermedios - puntosNegativos;
+            let puntos = `Total de puntos: ${totalPuntos}`;
+            let puntosPos = `Puntos positivos: ${puntosPositivos}`;
+            let puntosNeg = `Puntos negativos: ${puntosNegativos}`;
+
+            // Definir diagnóstico y recomendaciones
+            if (totalPuntos >= 6) {
+                diagnostico = "Tu bienestar personal es muy bueno.";
+                recomendaciones = "Mantén tus hábitos saludables.";
+            } else if (totalPuntos >= 3) {
+                diagnostico = "Tu bienestar personal es aceptable.";
+                recomendaciones = "Considera mejorar algunos hábitos.";
+            } else {
+                diagnostico = "Tu bienestar personal es bajo.";
+                recomendaciones = "Te recomendamos buscar ayuda profesional.";
+            }
+
+            // Mostrar los resultados en la sección de resultados
+            document.getElementById('diagnostico').innerText = diagnostico;
+            document.getElementById('recomendaciones').innerText = recomendaciones;
+            document.getElementById('datos-personales').innerText = datosPersonales;
+            document.getElementById('puntos').innerText = puntos;
+            document.getElementById('puntos-positivos').innerText = puntosPos;
+            document.getElementById('puntos-negativos').innerText = puntosNeg;
+
+            // Establecer valores en campos ocultos
+            document.getElementById('diagnostico-input').value = diagnostico;
+            document.getElementById('recomendaciones-input').value = recomendaciones;
+            document.getElementById('datos-personales-input').value = datosPersonales;
+            document.getElementById('puntos-positivos-input').value = puntosPositivos;
+            document.getElementById('puntos-negativos-input').value = puntosNegativos;
+
+            // Mostrar la sección de resultados
+            document.getElementById('resultados').style.display = 'block';
+
+            // Enviar el formulario después de 15 segundos
+            setTimeout(function() {
+                event.target.submit(); // Envía el formulario
+            }, 15000);
+        });
+    </script>
+</body>
+</html>
